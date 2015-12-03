@@ -23,7 +23,7 @@ exports.execute = function(options, webapp) {
   // etc..).
   nodeHelper.require('./webapp-optimize', options);
 
-  if (options.DEBUG === '0') {
+  if (options.DEBUG !== '1') {
     // Workaround for bug 955999, after multilocale, settings and system
     // generate too long args exceed nsIProcess.runw() can handle.
     // Thus, we clean webapp.asts values which generates from l10n in order to
