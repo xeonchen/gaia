@@ -19,12 +19,14 @@
       'exit'
     ]),
     APP_CANCELLED_KEYS: Object.freeze([
+      'contextmenu',
       'volumeup',
       'volumedown'
     ]),
     // Home key has different .key values on different devices.
     HOME_KEY_ALIAS: Object.freeze([
       'home',
+      'contextmenu',
       'mozhomescreen',
       'exit'
     ]),
@@ -32,6 +34,7 @@
       'power': 'sleep-button',
       'exit': 'home-button',
       'home': 'home-button',
+      'contextmenu' : 'home-button',
       'mozhomescreen': 'home-button',
       'volumeup': 'volume-up-button',
       'volumedown': 'volume-down-button'
@@ -44,7 +47,10 @@
       if (event.key == 'Unidentified') {
         switch (event.keyCode) {
           case window.KeyEvent.DOM_VK_HOME:
+          case window.KeyEvent.DOM_VK_CONTEXT_MENU:
             return 'home';
+          case window.KeyEvent.DOM_VK_SELECT:
+            return 'enter';
         }
       }
       return event.key && event.key.toLowerCase();
@@ -108,8 +114,7 @@
       var suffix;
       var needTranslation =
         this.isHardwareKeyEvent(event.type) ? this._applyPolicy(event) : false;
-
-      if (needTranslation) {
+       if (needTranslation) {
         key = this._getLowerCaseKeyName(event);
         suffix = (event.type.indexOf('keyup') > -1) ? '-release' : '-press';
         translatedType =

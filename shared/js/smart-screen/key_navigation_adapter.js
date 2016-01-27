@@ -83,6 +83,7 @@
         case KeyEvent.DOM_VK_LEFT:
           return 'left';
         case KeyEvent.DOM_VK_RETURN:
+        case KeyEvent.DOM_VK_SELECT:
           return 'enter';
         case KeyEvent.DOM_VK_ESCAPE:
           return 'esc';

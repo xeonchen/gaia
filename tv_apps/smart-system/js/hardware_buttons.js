@@ -209,6 +209,8 @@
    * @param  {Object} evt Event.
    */
   HardwareButtons.prototype.handleEvent = function hb_handleEvent(evt) {
+    console.log(JSON.stringify(evt.key));
+    console.log(JSON.stringify(evt.type));
     // When the software home button is displayed we ignore the hardware
     // home button if there is one
     var hardwareHomeEvent =
@@ -299,6 +301,9 @@
         // Ignore button releases that occur in this state.
         // These can happen after volumedown+sleep and home+volume.
         return;
+      default:
+        break;
+      
     }
     console.error('Unexpected hardware key: ', type);
   };
