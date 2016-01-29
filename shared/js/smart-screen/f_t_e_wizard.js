@@ -187,7 +187,7 @@
     switch(evt.type) {
 
       case 'keyup':
-        if (evt.keyCode === KeyEvent.DOM_VK_RETURN) {
+        if (evt.keyCode === KeyEvent.DOM_VK_RETURN || evt.keyCode === KeyEvent.DOM_VK_SELECT) {
           switch (evt.target.dataset.behavior) {
 
             case 'next':
